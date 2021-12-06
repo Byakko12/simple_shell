@@ -1,4 +1,4 @@
-#include "shell.h"
+/*#include "shell.h"
 
 int main()
 {
@@ -13,8 +13,8 @@ int main()
         printf("$ ");
         bytes_read = getline(&string, &n_line, stdin);
         _strtok(array, ":")
-        
+
     }
 
     return (0);
-}
+}*/
