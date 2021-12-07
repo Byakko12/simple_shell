@@ -12,7 +12,7 @@ int check_coincidence(char *string, char b)
 	return (0);
 }
 
-char *_strncpy(char *dest, char *src, int n, int i) // init:7 , pos 19;
+char *_strncpy(char *dest, char *src, int n, int i)
 {
 	int j = 0;
 
@@ -26,7 +26,7 @@ int num_before_delimit(char *string, char *delim, int n)
 {
 	int i = n, j, count;
 
-	for (count = 0; string[i]; i++, count++) // string[19]
+	for (count = 0; string[i]; i++, count++)
 	{
 		for (j = 0; delim[j]; j++)
 		{
@@ -57,7 +57,7 @@ char **_strtok(char *string, const char *delim)
 	char r[BUFFSIZE];
 	char *token = NULL;
 	int i = 0, k = 0, j = 0, tokcount; 
-	
+
 	for (tokcount = 0; string[i]; tokcount++)
 	{
 		j = num_before_delimit(string, delim, i);

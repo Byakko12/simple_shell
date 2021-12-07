@@ -1,20 +1,22 @@
-/*#include "shell.h"
+#include "shell.h"
 
-int main()
+int main(int argc, char **argv, char **env)
 {
-    char *array = "/bin/ls:/bin/cd:/bin/omg";
+
     char *string = NULL;
     size_t n_line = 0;
-    int bytes_read = 0;
-    int a = 1;
+    char *tokens[1024];
+    int bytes_read = 0, a = 1;
+    int (*functionStr)(char **argv);
 
-    while (a)
+    do
     {
-        printf("$ ");
+        write(out, "$ ", 4);
         bytes_read = getline(&string, &n_line, stdin);
-        _strtok(array, ":")
+        tokens = _strtok(array, ":")
+        stat_path(tokens, env)
 
-    }
+    } while (a)
 
-    return (0);
-}*/
+        return (0);
+}
