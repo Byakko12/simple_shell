@@ -12,17 +12,9 @@ int check_coincidence(char *string, char b)
 	return (0);
 }
 
-char *_strncpy(char *dest, char *src, int n, int i)
-{
-	int j = 0;
 
-	for (; i < n && src[i] != '\0'; i++, j++)
-		dest[j] = src[i];
-	dest[j] = '\0';
-	return (dest);
-}
 
-int num_before_delimit(char *string, char *delim, int n) 
+int num_before_delimit(char *string, char *delim, int n)
 {
 	int i = n, j, count;
 
@@ -34,7 +26,7 @@ int num_before_delimit(char *string, char *delim, int n)
 				return (count);
 		}
 	}
-	return (0);
+	return (count);
 }
 
 int count_delimit(char *string, char *delim, int n)
@@ -51,23 +43,54 @@ int count_delimit(char *string, char *delim, int n)
 	return (o);
 }
 
-char **_strtok(char *string, const char *delim)
+char *_strncpy(char *delim, char *src, int n, int i)
 {
-	char **tokentwo = NULL;
-	char r[BUFFSIZE];
-	char *token = NULL;
-	int i = 0, k = 0, j = 0, tokcount; 
+	
+	int j = 0, count = num_before_delimit(src, delim, i);
+	char *dest = malloc(sizeof(char) * count + 1);
+	if(!dest)
+	{
+		printf("CANTIDAD LETRA = %d\n", count);
+		return(NULL);
+	}
+	for (; i < n && src[i] != '\0'; i++, j++)
+		dest[j] = src[i];
+	dest[j] = '\0';
+	return (dest);
+}
 
-	for (tokcount = 0; string[i]; tokcount++)
+int count_chars_words(char *string, char *delim)
+{
+	int i = 0, j = 0, k = 0, count = 0;
+
+	while (string[i])
 	{
 		j = num_before_delimit(string, delim, i);
-		j += i;
-		token = _strncpy(r, string, j, i);
-		tokentwo[tokcount] = token;
-		printf("%s\n", token);
+		count += j, j += i;
 		i = j;
 		k = count_delimit(string, delim, i);
 		i += k;
 	}
-	return (tokentwo);
+	return (count);
+}
+
+char **_strtok(char *string, char *delim)
+{
+    	int i = 0, k = 0, j = 0, count,
+	count_words = count_chars_words(string, delim);
+	char **tokens = malloc(sizeof(char *) * (count_words + 1));
+
+	if (!tokens)
+		printf("malloc tokens F"), exit(100);
+	for (count = 0; string[i]; count++)
+	{
+		j = num_before_delimit(string, delim, i);
+		j += i;
+		tokens[count] = _strncpy(delim, string, j, i);
+		i = j;
+		k = count_delimit(string, delim, i);
+		i += k;
+	}
+	tokens[count] = NULL;
+	return (tokens);
 }

@@ -18,11 +18,12 @@ typedef struct commands
     int (*functionStr)(char **argv);
 
 } template;
-char **_strtok(char *string, const char *delim);
-int check_coincidence(char *string, char b);
-char *_strncpy(char *dest, char *src, int n, int initial);
+int check_coincidence(char* string, char b);
 int num_before_delimit(char *string, char *delim, int n);
 int count_delimit(char *string, char *delim, int n);
+char *_strncpy(char *delim, char *src, int n, int i);
+int count_chars_words(char *string, char *delim);
+char **_strtok(char *string, char *delim);
 char *stat_path(char *, char **argv);
 int cd_built_in();
 int help_built_in();
