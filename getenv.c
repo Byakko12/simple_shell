@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/**
+ * *_strcmp - compares two strings.
+ * @s1: String number 1
+ * @s2: String number 2
+ * Return: return positive if s1 is greater than s2
+ * negatives if is less or 0 if is equal
+ */
 int _strcmp(const char *s1,const char *s2)
 {
     int i = 0, temp;
@@ -19,6 +26,13 @@ int _strcmp(const char *s1,const char *s2)
     return (temp);
 }
 
+/**
+ * *_strncat - concatenates two strings and size
+ * @dest: Array buffer
+ * @src: Array to append
+ * @n: size of array
+ * Return: dest with two strings concat
+ */
 char *_strcat(char *dest, char *src)
 {
     int i = 0, j = 0;

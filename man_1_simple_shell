@@ -1,0 +1,96 @@
+.\" Manpage for simple_shell.
+.\" Contact davidlandg@gmail.com to correct errors or typos.
+.TH man 3 "07 Dec 2021" "1.0" "simple_shell man page"
+.SH NAME
+simple_shell \- hsh command interpreter (shell)
+
+.SH SYNOPSIS
+Is a command interpreter that reads lines from either path from
+
+Command [options] [file]
+
+.B Overview
+the shell is a command interpreter that execute commands read from the line
+of string, standart input or specified file, the program ensure that the
+command is executed in the correct path.
+
+.SH DESCRIPTION
+hsh - is the standart command interpreter that is invoked for the 
+system, receive a argument command to perform action, need a [option] to configurate
+parameters for especial configurations, and files/directories to be displayed or manipulated 
+, this version is 1.0.
+
+.SH Return 
+return 0 and display the command if is succeed, 1 or -1 if the program has someone error.
+
+someone more has display: exit (0) if the exit succeed, exit (2) if the argument is number negative
+and display other number with exit to terminate programm.
+.br 
+.SH USAGE
+below, can find some built-in and non built-in options.
+
+.br
+.Pp
+.B ls 
+- [list] list files ordered.
+
+.Bl
+.Pp
+.br 
+.B pwd 
+- [Print working directory] print the path of the working directory.
+
+
+.Bl
+.Pp
+.br 
+.B Built-in
+     when not found executable, instead of an external executable.
+
+.Bl
+.Pp
+.br
+.B cd
+- [change directory] allows moving between directories.
+
+.Bl
+.Pp 
+.br  
+.B env
+- [environ] display environment variables.
+
+.Bl
+.Pp
+.B     exit 
+- [exit] The exit command exits the current shell. 0 status value
+for successful execution.
+.SH OPTIONS
+
+.SH EXAMPLES
+
+Examples to combination of commands below.
+.br 
+
+.B   ls -la 
+.Pp  
+.Bl
+     list all files in de current directory, display in a long format and show
+     hiden files.
+
+.Pp
+.br 
+.B     ls -l
+.Pp
+     list all files in the current directory and display in a long format all files or directories.
+
+.Pp
+.br 
+.B cd /
+     change to directory root.
+
+.SH BUGS
+No known bugs.
+
+.SH AUTHOR
+Juan David Latorre (davidlandg@gmail.com)
+Yeison F. Correa (3977@holbertonschool.com)
