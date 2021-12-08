@@ -21,7 +21,7 @@ int _strlen(char *s)
  * Return: return positive if s1 is greater than s2
  * negatives if is less or 0 if is equal
  */
-int _strcmp(const char *s1,const char *s2)
+int _strcmp(const char *s1, const char *s2)
 {
     int i = 0, temp;
 
@@ -69,7 +69,6 @@ char *_strcat_memory(char *dest, char *src)
     string[i] = '\0';
     return (string);
 }
-
 
 char *_getenv(const char *name)
 {

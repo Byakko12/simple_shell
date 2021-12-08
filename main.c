@@ -8,15 +8,22 @@ int main(int argc, char **argv, char **env)
 	char *string = NULL;
 	size_t n_line = 0;
 	char **tokens = NULL;
-	int a = 1;
+	int a = 1, tty = 1;
 	int (*functionStr)(char **argv);
 	struct stat st;
 	(void)argc, (void)argv, (void)env;
 
+	if (isatty(STDIN_FILENO) == 0)
+	{
+		tty = 0;
+	}
 	do
 	{
-		write(out, "$h3llc1t4 ", 12);
-		fflush(stdin);
+		if (tty == 1)
+		{	
+			write(out, "$h3llc1t4 ", 12);
+		}
+        fflush(stdin);
 		getline(&string, &n_line, stdin);
 		tokens = _strtok(string, " \n\t");
 
@@ -42,7 +49,7 @@ int main(int argc, char **argv, char **env)
 			argument = tokens[0];
 			execut(argument, tokens);
 		}
-
+		free(string);
 	} while (a);
 	return (0);
 }

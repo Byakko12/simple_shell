@@ -7,6 +7,7 @@ int (*built_in(char **argv))(char **tokens)
     template command_array[] = {
         {"cd", cd_built_in},
         {"help", help_built_in},
+        {"env", env_built_in},
         {"exit", exit_built_in},
         {NULL, NULL}};
 

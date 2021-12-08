@@ -29,6 +29,7 @@ char **_strtok(char *string, char *delim);
 char *stat_path(char **argv);
 int cd_built_in(char **argv);
 int help_built_in(char **argv);
+int env_built_in();
 int exit_built_in(char **argv);
 int (*built_in(char **argv))(char **tokens);
 char *_strcat_memory(char *dest, char *src);
@@ -40,6 +41,5 @@ void free_arrays(char **array);
 char *_tokenized_path(char *path, char *token);
 int _strlen(char *s);
 int execut(char *argument, char **tokens);
-
 
 #endif
