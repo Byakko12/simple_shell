@@ -39,6 +39,7 @@ int main(void)
 			{
 				path = _getenv("PATH");
 				argument = _tokenized_path(path, tokens[0]);
+				free(path);
 				if (argument == NULL)
 				{
 					perror("Error:");
