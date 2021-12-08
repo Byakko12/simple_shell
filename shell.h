@@ -39,6 +39,7 @@ void free_all(char **argv, char *str);
 void free_arrays(char **array);
 char *_tokenized_path(char *path, char *token);
 int _strlen(char *s);
+int execut(char *argument, char **tokens);
 
 
 #endif
