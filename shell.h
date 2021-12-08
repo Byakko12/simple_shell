@@ -14,13 +14,10 @@
 #define out STDOUT_FILENO
 
 /**
- * struct commands - struct to comparates built-ins
- *
- * @comparated: Array buffer
- *
- * Return: commands type def
+ * struct commands - Structure to comparate strings.
+ * @comparated: string to compare the data type.
+ * @functionStr: Function to make the conversion.
  */
-
 typedef struct commands
 {
 	char *comparated;
@@ -41,7 +38,7 @@ int env_built_in(char **argv);
 int exit_built_in(char **argv);
 int (*built_in(char **argv))(char **tokens);
 char *_strcat_memory(char *dest, char *src);
-char *_getenv(const char *name);
+char **_getenv(const char *name);
 int _strcmp(const char *s1, const char *s2);
 int exec_command(char **argv);
 void free_all(char **argv, char *str);
@@ -49,5 +46,7 @@ void free_arrays(char **array);
 char *_tokenized_path(char *path, char *token);
 int _strlen(char *s);
 int execut(char *argument, char **tokens);
+void free_grid(char **grid, int height);
+char **validate_main(char **tokens);
 
 #endif

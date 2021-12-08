@@ -48,8 +48,8 @@ char *_tokenized_path(char *path, char *token)
 			break;
 		}
 	}
-	string = stat_path(tokens);
-	return (string);
+	free(string);
+	return (stat_path(tokens));
 }
 
 /**
