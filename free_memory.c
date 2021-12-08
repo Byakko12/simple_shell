@@ -14,7 +14,7 @@ void free_arrays(char **array)
 }
 
 /**
- * freestr - free memory of strings data
+ * free_all - free memory of strings data
  * @argv: double pointer to string char variable
  * @str: pointer to string char variable
  */

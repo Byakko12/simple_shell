@@ -13,10 +13,18 @@
 #define BUFFSIZE 1024
 #define out STDOUT_FILENO
 
+/**
+ * struct commands - struct to comparates built-ins
+ *
+ * @comparated: Array buffer
+ *
+ * Return: commands type def
+ */
+
 typedef struct commands
 {
-    char *comparated;
-    int (*functionStr)(char **argv);
+	char *comparated;
+	int (*functionStr)(char **argv);
 
 } template;
 
@@ -29,7 +37,7 @@ char **_strtok(char *string, char *delim);
 char *stat_path(char **argv);
 int cd_built_in(char **argv);
 int help_built_in(char **argv);
-int env_built_in();
+int env_built_in(char **argv);
 int exit_built_in(char **argv);
 int (*built_in(char **argv))(char **tokens);
 char *_strcat_memory(char *dest, char *src);

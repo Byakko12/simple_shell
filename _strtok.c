@@ -12,8 +12,6 @@ int check_coincidence(char *string, char b)
 	return (0);
 }
 
-
-
 int num_before_delimit(char *string, char *delim, int n)
 {
 	int i = n, j, count;
@@ -43,22 +41,6 @@ int count_delimit(char *string, char *delim, int n)
 	return (o);
 }
 
-char *_strncpy(char *delim, char *src, int n, int i)
-{
-	
-	int j = 0, count = num_before_delimit(src, delim, i);
-	char *dest = malloc(sizeof(char) * count + 1);
-	if(!dest)
-	{
-		printf("CANTIDAD LETRA = %d\n", count);
-		return(NULL);
-	}
-	for (; i < n && src[i] != '\0'; i++, j++)
-		dest[j] = src[i];
-	dest[j] = '\0';
-	return (dest);
-}
-
 int count_chars_words(char *string, char *delim)
 {
 	int i = 0, j = 0, k = 0, count = 0;
@@ -76,8 +58,8 @@ int count_chars_words(char *string, char *delim)
 
 char **_strtok(char *string, char *delim)
 {
-    	int i = 0, k = 0, j = 0, count,
-	count_words = count_chars_words(string, delim);
+	int i = 0, k = 0, j = 0, count,
+		count_words = count_chars_words(string, delim);
 	char **tokens = malloc(sizeof(char *) * (count_words + 1));
 
 	if (!tokens)

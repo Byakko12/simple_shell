@@ -1,32 +1,37 @@
 #include "shell.h"
 
-int main(int argc, char **argv, char **env)
+/**
+ * main - print sign $ and receives commands
+ *
+ * Return: success 0
+ */
+int main(void)
 {
-
-	char *argument = NULL;
-	char *path = NULL;
-	char *string = NULL;
+	char *argument = NULL, *path = NULL, *string = NULL, **tokens = NULL;
 	size_t n_line = 0;
-	char **tokens = NULL;
-	int a = 1, tty = 1;
+	int a = 1, tty = 1, bytes_read;
 	int (*functionStr)(char **argv);
 	struct stat st;
-	(void)argc, (void)argv, (void)env;
 
 	if (isatty(STDIN_FILENO) == 0)
-	{
 		tty = 0;
-	}
 	do
+
 	{
 		if (tty == 1)
-		{	
+		{
 			write(out, "$h3llc1t4 ", 12);
 		}
-        fflush(stdin);
-		getline(&string, &n_line, stdin);
+		fflush(stdin);
+		bytes_read = getline(&string, &n_line, stdin);
+		if (bytes_read == -1)
+		{
+			if (isatty(STDIN_FILENO))
+				printf("\n");
+			/*write("\n", 1);*/
+			return (-1);
+		}
 		tokens = _strtok(string, " \n\t");
-
 		if (stat(tokens[0], &st) != 0)
 		{
 			functionStr = built_in(tokens);
