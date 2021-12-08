@@ -52,7 +52,6 @@ char *_strcat_memory(char *dest, char *src)
     int i, j = 0;
     int count = _strlen(dest) + _strlen(src);
     char *string = malloc(sizeof(char *) * count + 1);
-    char *new = NULL;
 
     if (string == NULL)
     {
@@ -63,7 +62,7 @@ char *_strcat_memory(char *dest, char *src)
     {
         string[i] = dest[i];
     }
-    for (i; i <= count; i++, j++)
+    for (; i <= count; i++, j++)
     {
         string[i] = src[j];
     }

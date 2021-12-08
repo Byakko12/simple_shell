@@ -36,7 +36,7 @@ char *_token_after(char *path)
 }*/
 
 char *_tokenized_path(char *path, char *token)
-{   
+{
     int i = 0;
     char **tokens = NULL;
     char *slash = "/";
@@ -45,8 +45,8 @@ char *_tokenized_path(char *path, char *token)
 
     for (; tokens[i]; i++)
     {
-        string = _strcat_memory(slash, token);         //  /ls
-        tokens[i] = _strcat_memory(tokens[i], string); //  /usr/bin
+        string = _strcat_memory(slash, token);
+        tokens[i] = _strcat_memory(tokens[i], string);
         if (tokens[i] == NULL)
         {
             break;

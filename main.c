@@ -2,15 +2,16 @@
 
 int main(int argc, char **argv, char **env)
 {
-	(void)argc, (void)argv, (void)env;
+
 	char *argument = NULL;
 	char *path = NULL;
 	char *string = NULL;
 	size_t n_line = 0;
 	char **tokens = NULL;
-	int bytes_read = 0, a = 1;
+	int a = 1;
 	int (*functionStr)(char **argv);
 	struct stat st;
+	(void)argc, (void)argv, (void)env;
 
 	do
 	{
@@ -34,13 +35,13 @@ int main(int argc, char **argv, char **env)
 				execut(argument, tokens);
 			}
 			else
-				a = functionStr(tokens);	
+				a = functionStr(tokens);
 		}
 		else
 		{
-			argument = tokens[0];  // /usr/bin/ls
+			argument = tokens[0];
 			execut(argument, tokens);
-		}	
+		}
 
 	} while (a);
 	return (0);
