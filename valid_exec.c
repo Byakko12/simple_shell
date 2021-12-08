@@ -1,5 +1,10 @@
 #include "shell.h"
-
+/**
+ * execut - execute command
+ * @argument: path tokenized
+ * @tokens: command tokenized
+ * Return: 1 to succed, -1 if fail
+ */
 int execut(char *argument, char **tokens)
 {
 	pid_t child_pid;

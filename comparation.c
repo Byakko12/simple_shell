@@ -3,7 +3,6 @@
 /**
  * built_in - print sign $ and receives commands
  * @argv: commands to be comparated
- * @tokens: arguments to read
  * Return: function to be called, or NULL if fails
  */
 int (*built_in(char **argv))(char **tokens)
@@ -29,7 +28,7 @@ int (*built_in(char **argv))(char **tokens)
 /**
  * *_tokenized_path - tokenize path
  * @path: path to be tokenized
- * @tokens: arguments to store path
+ * @token: arguments to store path
  * Return: tokens with path or NULL
  */
 char *_tokenized_path(char *path, char *token)
@@ -38,8 +37,8 @@ char *_tokenized_path(char *path, char *token)
 	char **tokens = NULL;
 	char *slash = "/";
 	char *string = NULL;
-	tokens = _strtok(path, ":");
 
+	tokens = _strtok(path, ":");
 	for (; tokens[i]; i++)
 	{
 		string = _strcat_memory(slash, token);
@@ -56,7 +55,7 @@ char *_tokenized_path(char *path, char *token)
 /**
  * *stat_path - validate path
  * @argv: receives arguments
- * Return: tokens with path or NULL 
+ * Return: tokens with path or NULL
  */
 char *stat_path(char **argv)
 {

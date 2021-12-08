@@ -2,7 +2,7 @@
 
 /**
  * cd_built_in - change directory
- *
+ * @argv: parameter
  * Return: 1 if success
  */
 int cd_built_in(char **argv)
@@ -13,7 +13,7 @@ int cd_built_in(char **argv)
 }
 /**
  * help_built_in - display help to sh
- *
+ * @argv: parameter
  * Return: 1 if success
  */
 int help_built_in(char **argv)
@@ -25,7 +25,7 @@ int help_built_in(char **argv)
 
 /**
  * env_built_in - display environ
- *
+ * @argv: parameter
  * Return: 1 if success
  */
 int env_built_in(char **argv)
@@ -44,7 +44,7 @@ int env_built_in(char **argv)
 
 /**
  * exit_built_in - exit of program
- *
+ * @argv: parameter
  * Return: 1 if success
  */
 int exit_built_in(char **argv)

@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * check_coincidence - checks for coincidence
+ * @string: string
+ * @b: character
+ * Return: 1 if found coincidence, 0 if not
+ */
 int check_coincidence(char *string, char b)
 {
 	int i;
@@ -12,6 +18,13 @@ int check_coincidence(char *string, char b)
 	return (0);
 }
 
+/**
+ * num_before_delimit - count before delimiter
+ * @string: string
+ * @delim: delimiter
+ * @n: size
+ * Return: count before delimiter
+ */
 int num_before_delimit(char *string, char *delim, int n)
 {
 	int i = n, j, count;
@@ -27,6 +40,13 @@ int num_before_delimit(char *string, char *delim, int n)
 	return (count);
 }
 
+/**
+ * count_delimit - count delimiters
+ * @string: string
+ * @delim: delimiter
+ * @n: size
+ * Return: size of delimiters
+ */
 int count_delimit(char *string, char *delim, int n)
 {
 	int i, k, o = 0;
@@ -41,6 +61,12 @@ int count_delimit(char *string, char *delim, int n)
 	return (o);
 }
 
+/**
+ * count_chars_words - count only string without delimiter
+ * @string: string
+ * @delim: delimiter
+ * Return: count of words
+ */
 int count_chars_words(char *string, char *delim)
 {
 	int i = 0, j = 0, k = 0, count = 0;
@@ -56,6 +82,12 @@ int count_chars_words(char *string, char *delim)
 	return (count);
 }
 
+/**
+ * **_strtok - store an array of tokens
+ * @string: string
+ * @delim: delimiter
+ * Return: array of tokens
+ */
 char **_strtok(char *string, char *delim)
 {
 	int i = 0, k = 0, j = 0, count,

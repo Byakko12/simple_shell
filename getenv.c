@@ -1,7 +1,8 @@
 #include "shell.h"
+
 /**
- * *_getenv - 
- * @name: path 
+ * *_getenv - get path tokenized
+ * @name: path
  * Return: path after "="
  */
 char *_getenv(const char *name)
