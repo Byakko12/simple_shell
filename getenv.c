@@ -1,6 +1,20 @@
 #include "shell.h"
 
 /**
+ * _strlen - returns the length of a string
+ * @s: array of strings
+ * Return: return length
+ */
+int _strlen(char *s)
+{
+    int i;
+
+    for (i = 0; s[i] != '\0'; i++)
+        ;
+    return (i);
+}
+
+/**
  * *_strcmp - compares two strings.
  * @s1: String number 1
  * @s2: String number 2
@@ -33,63 +47,52 @@ int _strcmp(const char *s1,const char *s2)
  * @n: size of array
  * Return: dest with two strings concat
  */
-char *_strcat(char *dest, char *src)
+char *_strcat_memory(char *dest, char *src)
 {
-    int i = 0, j = 0;
+    int i, j = 0;
+    int count = _strlen(dest) + _strlen(src);
+    char *string = malloc(sizeof(char *) * count + 1);
+    char *new = NULL;
 
-    for (; dest[i] != '\0'; i++)
+    if (string == NULL)
     {
+        return (NULL);
     }
-    for (; src[j] != '\0'; j++)
+
+    for (i = 0; dest[i] != '\0'; i++)
     {
-        dest[i++] = src[j];
+        string[i] = dest[i];
     }
-    dest[i] = '\0';
-    return (dest);
+    for (i; i <= count; i++, j++)
+    {
+        string[i] = src[j];
+    }
+    string[i] = '\0';
+    return (string);
 }
 
-char **_token_path(char *path, char *token)
-{
-    int i = 0;
-    char **tokens = NULL;
-    char *slash = "/";
-    char *string = NULL;
 
-    for (; (tokens[i] = _strtok(path, ":")); path = NULL, i++)
-    {
-        string = _strcat(slash, token);         // /ls
-        tokens[i] = _strcat(tokens[i], string); // /usr/bin
-        printf("%s\n", tokens[i]);
-        if (tokens[i] == NULL)
-        {
-            break;
-        }
-    }
-    return (tokens);
-}
-
-char **_getenv(const char *name)
+char *_getenv(const char *name)
 {
     int i = 0, dub = 0;
     char **envi = __environ;
-    char **str_compare = NULL;
+    char **strings = NULL;
     /* char *env = "PATH";*/
 
     while (envi[i])
     {
-        str_compare = _strtok(envi[i], "=");
-        dub = _strcmp(str_compare[i], name);
+        strings = _strtok(envi[i], "=");
+        dub = _strcmp(strings[0], name);
 
         if (!dub)
         {
-            str_compare = _strtok(NULL, "");
-            return (str_compare);
+            return (strings[1]);
         }
         i++;
     }
     return (NULL);
 }
-
+/*
 int main()
 {
     int i = 0;
@@ -101,9 +104,11 @@ int main()
     printf("%s", p);
 
     paaath = _token_path(path, "ls");
+
     for (i = 0; paaath[i]; i++)
     {
         printf("%s", paaath[i]);
     }
     return (0);
 }
+*/
