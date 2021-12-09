@@ -2,7 +2,7 @@
 
 /**
  * _strlen - returns the length of a string
- * @s: array of strings
+ * @s: string
  * Return: return length
  */
 int _strlen(char *s)
@@ -67,30 +67,34 @@ int _strcmp(const char *s1, const char *s2)
 }
 
 /**
- * *_strcat_memory - concatenates two strings with memory
- * @dest: Array buffer
- * @src: Array to append
+ * *concat_path - check path
+ * @command: string
+ * @p_tokenized: Array to be comparated
  * Return: string with two strings concat
  */
-char *_strcat_memory(char *dest, char *src)
+
+char *concat_path(char *command, char **p_tokenized)
 {
-	int i, j = 0;
-	int count = _strlen(dest) + _strlen(src);
-	char *string = malloc(sizeof(char *) * count + 1);
+	int i = 0;
+	char *slash = "/";
+	char *string = NULL;
+	struct stat st;
 
-	if (string == NULL)
+	for (; p_tokenized[i]; i++)
 	{
-		return (NULL);
+		string = _strcat_memory(p_tokenized[i], slash, command);
+		if (string == NULL)
+			return (NULL);
+		if (stat(string, &st) == 0)
+		{
+			free_arrays(p_tokenized);
+			free(p_tokenized);
+			free(command);
+			return (string);
+		}
+		free(command);
 	}
-
-	for (i = 0; dest[i] != '\0'; i++)
-	{
-		string[i] = dest[i];
-	}
-	for (; i <= count; i++, j++)
-	{
-		string[i] = src[j];
-	}
-	string[i] = '\0';
-	return (string);
+	free_arrays(p_tokenized);
+	free(p_tokenized);
+	return (command);
 }

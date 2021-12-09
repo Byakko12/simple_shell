@@ -5,7 +5,7 @@
  * @argv: commands to be comparated
  * Return: function to be called, or NULL if fails
  */
-int (*built_in(char **argv))(char **tokens)
+int (*built_in(char **argv))(char **tokens, char *string, int n)
 {
 	size_t i = 0;
 
@@ -26,52 +26,19 @@ int (*built_in(char **argv))(char **tokens)
 }
 
 /**
- * *_tokenized_path - tokenize path
+ * *store_tokens - tokenize path
  * @path: path to be tokenized
  * @token: arguments to store path
  * Return: tokens with path or NULL
  */
-char *_tokenized_path(char *path, char *token)
+/*
+char *store_tokens(char **argv)
 {
-	int i = 0;
-	char **tokens = NULL;
-	char *slash = "/";
-	char *string = NULL;
 
-	tokens = _strtok(path, ":");
-	for (; tokens[i]; i++)
-	{
-		string = _strcat_memory(slash, token);
-		tokens[i] = _strcat_memory(tokens[i], string);
-		if (tokens[i] == NULL)
-		{
-			break;
-		}
-	}
-	free(string);
-	return (stat_path(tokens));
-}
-
-/**
- * *stat_path - validate path
- * @argv: receives arguments
- * Return: tokens with path or NULL
- */
-char *stat_path(char **argv)
-{
-	int i = 0;
-	struct stat st;
-
-	for (i = 0; argv[i]; i++)
-	{
-		if (stat(argv[i], &st) == 0)
-		{
-			return (argv[i]);
-		}
-	}
-
-	return (NULL);
-}
+	argv[0] = concat_path(argv[0], _strtok(_getenv("PATH")), ":")
+		
+		return (argv[0]);
+}*/
 
 /**
  * exec_command - execute command
