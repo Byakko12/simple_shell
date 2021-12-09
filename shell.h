@@ -8,6 +8,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <string.h>
 
 /*MACROS*/
 #define BUFFSIZE 1024
@@ -50,5 +51,6 @@ int validate_main(char **tokens, char *str, int n);
 int is_number(char **argv);
 int _atoi(char *s);
 char *concat_path(char *command, char **p_tokenized);
+
 
 #endif

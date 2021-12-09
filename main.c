@@ -7,14 +7,15 @@
  */
 int main(void)
 {
-	char *string = NULL, **tokens = NULL;
 	size_t n_line = 0;
 	int a = 0, tty = 1, bytes_read, b = 0;
-
 	isatty(STDIN_FILENO) == 0 ? tty = 0 : tty;
 
-	while (a == 0)
+	do
+	
 	{
+		char *string = NULL, **tokens = NULL;
+		
 		a = 1;
 		tty == 1 ? write(out, "$ ", 2) : tty;
 		fflush(stdin);
@@ -23,6 +24,7 @@ int main(void)
 		{
 			if (isatty(STDIN_FILENO))
 				write(STDOUT_FILENO, "\n", 1);
+			free(string);
 			return (-1);
 		}
 		if (bytes_read == 0)
@@ -33,9 +35,8 @@ int main(void)
 			tokens = _strtok(string, DELIMIT);
 			a = validate_main(tokens, string, b);
 		}
-		if (a == 0)
-			free_all(tokens, string);
-	}
+		free_all(tokens, string);
+	} while (a == 0);
 	return (0);
 }
 
@@ -48,25 +49,21 @@ int validate_main(char **tokens, char *str, int n)
 {
 	int (*functionStr)(char **argv, char *string, int n);
 	struct stat st;
-	char *argument = NULL;
 
 	if (stat(tokens[0], &st) != 0)
 	{
 		functionStr = built_in(tokens);
 		if (functionStr == NULL)
 		{
-			argument = concat_path(tokens[0], _strtok(_getenv("PATH"), ":"));
-			if (argument == NULL)
+			tokens[0] = concat_path(tokens[0], _strtok(_getenv("PATH"), ":"));
+			if (tokens[0] == NULL)
 				perror("Error:");
-			execut(argument, tokens);
+			execut(tokens[0], tokens);
 		}
 		else
 			functionStr(tokens, str, n);
 	}
 	else
-	{
-		argument = tokens[0];
-		execut(argument, tokens);
-	}
+		execut(tokens[0], tokens);
 	return (0);
 }

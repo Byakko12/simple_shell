@@ -83,8 +83,8 @@ char *concat_path(char *command, char **p_tokenized)
 	for (; p_tokenized[i]; i++)
 	{
 		string = _strcat_memory(p_tokenized[i], slash, command);
-		if (string == NULL)
-			return (NULL);
+		if (!string)
+			return (command);
 		if (stat(string, &st) == 0)
 		{
 			free_arrays(p_tokenized);
@@ -92,9 +92,10 @@ char *concat_path(char *command, char **p_tokenized)
 			free(command);
 			return (string);
 		}
-		free(command);
+		free(string);
 	}
 	free_arrays(p_tokenized);
 	free(p_tokenized);
 	return (command);
 }
+
