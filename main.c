@@ -9,13 +9,13 @@ int main(void)
 {
 	size_t n_line = 0;
 	int a = 0, tty = 1, bytes_read, b = 0;
-	isatty(STDIN_FILENO) == 0 ? tty = 0 : tty;
 
+	isatty(STDIN_FILENO) == 0 ? tty = 0 : tty;
 	do
-	
+
 	{
 		char *string = NULL, **tokens = NULL;
-		
+
 		a = 1;
 		tty == 1 ? write(out, "$ ", 2) : tty;
 		fflush(stdin);
@@ -43,6 +43,8 @@ int main(void)
 /**
  * validate_main - execute command
  * @tokens: command tokenized
+ * @str: command
+ * @n: counter
  * Return: 1 to succed, -1 if fail
  */
 int validate_main(char **tokens, char *str, int n)

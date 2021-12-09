@@ -1,9 +1,10 @@
 #include "shell.h"
 
 /**
- * *_strcat_memory - concatenates two strings with memory
- * @dest: Array buffer
- * @src: Array to append
+ * *_strcat_memory - concatenates three strings with memory
+ * @t_path: total path
+ * @sls: slash
+ * @command: command
  * Return: string with two strings concat
  */
 char *_strcat_memory(char *t_path, char *sls, char *command)
@@ -56,7 +57,7 @@ int _atoi(char *s)
 char *_getenv(char *name)
 {
 	int i = 0, j = 0;
-	char **environ = __environ; 
+	char **environ = __environ;
 
 	for (; environ[i]; i++)
 	{

@@ -26,26 +26,12 @@ int (*built_in(char **argv))(char **tokens, char *string, int n)
 }
 
 /**
- * *store_tokens - tokenize path
- * @path: path to be tokenized
- * @token: arguments to store path
- * Return: tokens with path or NULL
+ * execut - execute command
+ * @argument: path tokenized
+ * @tokens: command tokenized
+ * Return: 1 to succed, -1 if fail
  */
-/*
-char *store_tokens(char **argv)
-{
-
-	argv[0] = concat_path(argv[0], _strtok(_getenv("PATH")), ":")
-		
-		return (argv[0]);
-}*/
-
-/**
- * exec_command - execute command
- * @argv: receives arguments
- * Return: 0 if success or 1 if fails
- */
-int exec_command(char **argv)
+int execut(char *argument, char **tokens)
 {
 	pid_t child_pid;
 	int status = 0;
@@ -58,11 +44,11 @@ int exec_command(char **argv)
 	}
 	if (child_pid == 0)
 	{
-		execve(argv[0], argv, NULL);
+		tokens[0] = argument;
+		execve(tokens[0], tokens, NULL);
 		exit(0);
 	}
 	else
 		wait(&status);
-
-	return (0);
+	return (1);
 }

@@ -2,7 +2,9 @@
 
 /**
  * cd_built_in - change directory
- * @argv: parameter
+ * @argv: arguments
+ * @string: command
+ * @n: counter
  * Return: 1 if success
  */
 int cd_built_in(char **argv, char *string, int n)
@@ -15,7 +17,9 @@ int cd_built_in(char **argv, char *string, int n)
 
 /**
  * help_built_in - display help to sh
- * @argv: parameter
+ * @argv: arguments
+ * @string: command
+ * @n: counter
  * Return: 1 if success
  */
 int help_built_in(char **argv, char *string, int n)
@@ -23,14 +27,16 @@ int help_built_in(char **argv, char *string, int n)
 	(void)argv;
 	(void)string;
 	(void)n;
-	
+
 	printf("entro el help\n");
 	return (1);
 }
 
 /**
  * env_built_in - display environ
- * @argv: parameter
+ * @argv: arguments
+ * @string: command
+ * @n: counter
  * Return: 1 if success
  */
 int env_built_in(char **argv, char *string, int n)
@@ -52,7 +58,7 @@ int env_built_in(char **argv, char *string, int n)
 
 /**
  * is_number - verifies if is number
- * @argv: Array of strings
+ * @argv: arguments
  * Return: return 1 if has numbers or 0 if it fails
  */
 int is_number(char **argv)
@@ -69,8 +75,9 @@ int is_number(char **argv)
 
 /**
  * exit_built_in - exit of program
- * @argv: parameter
+ * @argv: arguments
  * @string: command
+ * @n: counter
  * Return: 1 if success
  */
 int exit_built_in(char **argv, char *string, int n)
